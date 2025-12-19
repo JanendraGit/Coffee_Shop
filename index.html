@@ -32,29 +32,61 @@
         </nav>
     </header>
     <main>
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="hero-image-container">
                 <img src="https://i.pinimg.com/1200x/5a/96/e2/5a96e20176bf41ab5f7a763184fbf5b0.jpg" alt="Cup of coffee" class="hero-image">
             </div>
             <div class="hero-content">
-                <h1 class="hero-title">Experience the Art of Coffee</h1>
+                <h1 class="hero-title">
+                    <span class="word">Experience</span>
+                    <span class="word">the</span>
+                    <span class="word">Art</span>
+                    <span class="word">of</span>
+                    <span class="word">Coffee</span>
+                </h1>
                 <p class="hero-description">Freshly brewed, expertly crafted, and served with a smile.</p>
                 <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
             </div>
+            <a href="#about" class="scroll-down-indicator">
+                <i class="fas fa-arrow-down"></i>
+            </a>
         </section>
         <section id="about" class="about-section section-content fade-in">
-            <div class="about-card">
-                <div class="about-image">
-                    <img src="https://i.pinimg.com/736x/d7/be/90/d7be907d4f716796e7eb043eeb7e899b.jpg" alt="About our coffee shop">
+            <div class="about-container">
+                <div class="about-image-wrapper">
+                    <img src="https://i.pinimg.com/736x/d7/be/90/d7be907d4f716796e7eb043eeb7e899b.jpg" alt="About our coffee shop" class="about-image">
                 </div>
-                <div class="about-text">
+                <div class="about-text-wrapper">
                     <h2 class="section-title">Our Story</h2>
                     <p class="section-description">
                         Founded in 2023, our coffee shop is a haven for coffee lovers. We believe in the power of a good cup of coffee to bring people together and create lasting memories. Our beans are ethically sourced from the finest coffee-growing regions around the world, and each cup is brewed to perfection by our expert baristas.
                     </p>
                     <p class="section-description">
-                        Our values are simple: quality, community, and sustainability. We are committed to providing our customers with the best possible experience, from the moment they walk through our doors to the last sip of their coffee.
+                        Our coffee shop was born from a simple love for good coffee and meaningful moments. What started as a small dream has grown into a cozy space where friends meet, ideas flow, and every cup tells a story.
                     </p>
+                    <p class="section-description">
+                        We carefully select quality coffee beans and prepare each drink with passion and care. From the rich aroma of freshly brewed coffee to the warm smiles that welcome you in, everything we do is about creating a comfortable and memorable experience.
+
+                        More than just a coffee shop, we are a place to relax, connect, and enjoy life—one cup at a time.
+                    </p>
+                </div>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="50">12</h3>
+                    <p class="stat-title">Coffee Varieties</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="25">7</h3>
+                    <p class="stat-title">Awards Won</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="1500">68</h3>
+                    <p class="stat-title">Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="10">3</h3>
+                    <p class="stat-title">Years of Experience</p>
                 </div>
             </div>
         </section>
@@ -77,7 +109,7 @@
                 <!-- Menu Item 2 -->
                 <div class="menu-card" data-id="2">
                     <div class="menu-card-image">
-                        <img src="https://i.pinimg.com/1200x/0b/d7/59/0bd75949aa7b084ddbae9f4072b17a10.jpg" alt="Latte">
+                        <img src="https://i.pinimg.com/1200x/23/5f/07/235f076bea37a0366257d880e57586b6.jpg" alt="Latte">
                         <span class="badge">New</span>
                     </div>
                     <div class="menu-card-content">
@@ -90,7 +122,7 @@
                 <!-- Menu Item 3 -->
                 <div class="menu-card" data-id="3">
                     <div class="menu-card-image">
-                        <img src="https://i.pinimg.com/1200x/c4/73/7e/c4737e013a673e196416210867f9b1f8.jpg" alt="Cappuccino">
+                        <img src="https://i.pinimg.com/1200x/6c/95/84/6c9584749e0ae0640f51cdb347478358.jpg" alt="Cappuccino">
                     </div>
                     <div class="menu-card-content">
                         <h3 class="menu-card-title">Cappuccino</h3>
@@ -102,7 +134,7 @@
                  <!-- Menu Item 4 -->
                  <div class="menu-card" data-id="4">
                     <div class="menu-card-image">
-                        <img src="https://i.pinimg.com/1200x/ae/98/ce/ae98ceb709564a67b7f2fbaac9cd34ab.jpg" alt="Iced Coffee">
+                        <img src="https://i.pinimg.com/1200x/0e/5d/9f/0e5d9fa15b0d29687d53d39be252d07b.jpg" alt="Iced Coffee">
                     </div>
                     <div class="menu-card-content">
                         <h3 class="menu-card-title">Iced Coffee</h3>
@@ -149,7 +181,7 @@
                     <i class="fas fa-quote-left quote-icon"></i>
                     <p class="testimonial-text">"I love the new Iced Coffee! It's the perfect drink for a hot summer day. The service is always fast and efficient."</p>
                     <div class="testimonial-author">
-                        <img src="https://i.pinimg.com/736x/2c/e9/54/2ce954643204eaaa96de23f0d48a4d4e.jpg" alt="Customer 3" class="author-photo">
+                        <img src="https://i.pinimg.com/1200x/a6/44/91/a6449101d81731a30254d352607d6069.jpg" alt="Customer 3" class="author-photo">
                         <div class="author-details">
                             <h4 class="author-name">Emily Johnson</h4>
                             <div class="star-rating">
@@ -164,41 +196,53 @@
             <h2 class="section-title text-center">Our Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://i.pinimg.com/1200x/e8/a5/cc/e8a5cc4a1e9dda66b49fa4577e0a7922.jpg" alt="Gallery image 1" class="gallery-image">
+                    <img src="https://i.pinimg.com/1200x/a3/2b/17/a32b17e4c55232d9642d873f9617ac65.jpg" alt="Gallery image 1" class="gallery-image">
                     <div class="gallery-overlay">
                         <p class="gallery-text">Cozy Ambiance</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.pinimg.com/736x/bc/63/a5/bc63a59e89996dc996a1d0f1de115d72.jpg" alt="Gallery image 2" class="gallery-image">
+                    <img src="https://i.pinimg.com/736x/33/ea/4c/33ea4caecc02286b6eeb731f7d2ced76.jpg" alt="Gallery image 2" class="gallery-image">
                     <div class="gallery-overlay">
                         <p class="gallery-text">Artisan Coffee</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.pinimg.com/1200x/c9/ac/50/c9ac503bfc6159e5d2818d18b78d853b.jpg" alt="Gallery image 3" class="gallery-image">
+                    <img src="https://i.pinimg.com/1200x/a1/59/67/a159673897c336d97f722be166f8dea3.jpg" alt="Gallery image 3" class="gallery-image">
                     <div class="gallery-overlay">
                         <p class="gallery-text">Fresh Pastries</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.pinimg.com/1200x/1e/fb/28/1efb28a3812cc89c665ba923c62ef369.jpg" alt="Gallery image 4" class="gallery-image">
+                    <img src="https://i.pinimg.com/1200x/fb/74/65/fb7465dac4aae2e03e3de5d0ed7a1505.jpg" alt="Gallery image 4" class="gallery-image">
                     <div class="gallery-overlay">
                         <p class="gallery-text">Outdoor Seating</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://i.pinimg.com/736x/7a/6b/66/7a6b66ddf0649928e0bf54cffd337aad.jpg" alt="Gallery image 5" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <p class="gallery-text">Friendly Baristas</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.pinimg.com/1200x/27/53/68/2753683daa3a8dfd07e25c0a32db6bcf.jpg" alt="Gallery image 6" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <p class="gallery-text">Community Events</p>
-                    </div>
-                </div>
+<!--                <div class="gallery-item">-->
+<!--                    <img src="https://i.pinimg.com/1200x/62/03/26/620326e0c1060032490c9329c38c079f.jpg" alt="Gallery image 5" class="gallery-image">-->
+<!--                    <div class="gallery-overlay">-->
+<!--                        <p class="gallery-text">Friendly Baristas</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="gallery-item">-->
+<!--                    <img src="https://i.pinimg.com/1200x/d5/84/79/d584790b425c57afe9855f69cb4c2a35.jpg" alt="Gallery image 6" class="gallery-image">-->
+<!--                    <div class="gallery-overlay">-->
+<!--                        <p class="gallery-text">Community Events</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="gallery-item">-->
+<!--                    <img src="https://i.pinimg.com/736x/dd/f3/ff/ddf3ffc3e09b3b1804229aaade4f7d75.jpg" alt="Gallery image 6" class="gallery-image">-->
+<!--                    <div class="gallery-overlay">-->
+<!--                        <p class="gallery-text">Community Events</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="gallery-item">-->
+<!--                    <img src="https://i.pinimg.com/1200x/54/7b/b5/547bb58d1b06ab2792dcff116bfc18f0.jpg" alt="Gallery image 6" class="gallery-image">-->
+<!--                    <div class="gallery-overlay">-->
+<!--                        <p class="gallery-text">Community Events</p>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </section>
         <section id="contact" class="contact-section section-content fade-in">

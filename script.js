@@ -19,6 +19,9 @@ const backToTopButton = document.querySelector('.back-to-top');
 const sections = document.querySelectorAll('main section');
 const navLinks = document.querySelectorAll('.nav-link');
 const body = document.body;
+const heroImage = document.querySelector('.hero-image');
+const statNumbers = document.querySelectorAll('.stat-number');
+const menuGrid = document.querySelector('.menu-grid');
 
 // Scroll event listener
 window.addEventListener('scroll', debounce(() => {
@@ -50,13 +53,7 @@ window.addEventListener('scroll', debounce(() => {
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
-        // Check for the hero section separately
-        if (!current && href === '#') {
-             // No section is "current" at the top, so you might want to highlight "Home"
-            if (link.textContent === 'Home') {
-                link.classList.add('active');
-            }
-        } else if (href.includes(current)) {
+        if (href.includes(current)) {
             link.classList.add('active');
         }
     });
@@ -67,6 +64,10 @@ window.addEventListener('scroll', debounce(() => {
             homeLink.classList.add('active');
         }
     }
+    
+    // Parallax effect for hero image
+    const scrollPosition = window.pageYOffset;
+    heroImage.style.transform = `translateY(${scrollPosition * 0.3}px)`;
 
 }));
 
@@ -88,6 +89,9 @@ const appearOnScroll = new IntersectionObserver(function(
             return;
         } else {
             entry.target.classList.add('appear');
+            if (entry.target.classList.contains('stats-container')) {
+                animateCounters();
+            }
             appearOnScroll.unobserve(entry.target);
         }
     });
@@ -97,6 +101,23 @@ appearOptions);
 faders.forEach(fader => {
     appearOnScroll.observe(fader);
 });
+
+// Animated Counters
+function animateCounters() {
+    statNumbers.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000; // 2 seconds
+        const stepTime = Math.abs(Math.floor(duration / target));
+        let current = 0;
+        const timer = setInterval(() => {
+            current += 1;
+            counter.innerText = current;
+            if (current == target) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+    });
+}
 
 // Mobile Navigation
 const hamburger = document.querySelector('.hamburger');
@@ -119,7 +140,6 @@ const cartIcon = document.querySelector('.cart-icon');
 const cartPanel = document.querySelector('.cart-panel');
 const cartOverlay = document.querySelector('.cart-overlay');
 const closeCartBtn = document.querySelector('.close-cart-btn');
-const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 const cartItemsContainer = document.querySelector('.cart-items');
 const cartTotalElement = document.querySelector('.cart-total-price');
 const cartItemCountElement = document.querySelector('.cart-item-count');
@@ -135,18 +155,6 @@ function toggleCart() {
 cartIcon.addEventListener('click', toggleCart);
 closeCartBtn.addEventListener('click', toggleCart);
 cartOverlay.addEventListener('click', toggleCart);
-
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        const menuCard = e.target.closest('.menu-card');
-        const id = menuCard.dataset.id;
-        const title = menuCard.querySelector('.menu-card-title').innerText;
-        const price = parseFloat(menuCard.querySelector('.menu-card-price').innerText.replace('$', ''));
-        const image = menuCard.querySelector('.menu-card-image img').src;
-
-        addToCart(id, title, price, image);
-    });
-});
 
 function addToCart(id, title, price, image) {
     const existingItem = cart.find(item => item.id === id);
@@ -222,3 +230,66 @@ function handleRemoveItem(e) {
     cart = cart.filter(item => item.id !== id);
     updateCart();
 }
+
+// Fetch menu items from the backend
+async function fetchMenu() {
+    try {
+        const response = await fetch('/api/menu');
+        const menuItems = await response.json();
+        renderMenu(menuItems);
+    } catch (error) {
+        console.error('Error fetching menu:', error);
+    }
+}
+
+function renderMenu(menuItems) {
+    menuGrid.innerHTML = '';
+    menuItems.forEach(item => {
+        const menuCard = document.createElement('div');
+        menuCard.classList.add('menu-card');
+        menuCard.dataset.id = item.id;
+
+        let badge = '';
+        if (item.category) {
+            badge = `<span class="badge ${item.category.toLowerCase()}">${item.category}</span>`;
+        }
+
+        menuCard.innerHTML = `
+            <div class="menu-card-image">
+                <img src="${item.image}" alt="${item.name}">
+                ${badge}
+            </div>
+            <div class="menu-card-content">
+                <h3 class="menu-card-title">${item.name}</h3>
+                <p class="menu-card-description">${item.description}</p>
+                <p class="menu-card-price">$${item.price.toFixed(2)}</p>
+                <button class="btn add-to-cart-btn">Add to Cart</button>
+            </div>
+        `;
+        menuGrid.appendChild(menuCard);
+    });
+
+    // Re-add event listeners for the new "Add to Cart" buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const menuCard = e.target.closest('.menu-card');
+            const id = menuCard.dataset.id;
+            const title = menuCard.querySelector('.menu-card-title').innerText;
+            const price = parseFloat(menuCard.querySelector('.menu-card-price').innerText.replace('$', ''));
+            const image = menuCard.querySelector('.menu-card-image img').src;
+
+            addToCart(id, title, price, image);
+        });
+    });
+}
+
+
+// Set initial states
+document.addEventListener('DOMContentLoaded', () => {
+    // Set initial word animation delays
+    document.querySelectorAll('.hero-title .word').forEach((word, i) => {
+        word.style.setProperty('--i', i);
+    });
+
+    fetchMenu();
+});
